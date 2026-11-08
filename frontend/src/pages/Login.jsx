@@ -48,7 +48,7 @@ export default function Login({ onSignedIn }) {
       </div>
       <div className="login-panel">
         <form className="login-box" onSubmit={submit}>
-          <h2>Sign in with WWT SSO</h2>
+          <h2>Sign in with Northstead SSO</h2>
           <p className="muted" style={{ marginTop: 0 }}>Simulated single sign-on. Pick an employee to see how access changes by role.</p>
           {waking && !error && <p className="muted">Connecting…</p>}
           {users.map((u) => (

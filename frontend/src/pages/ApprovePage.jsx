@@ -65,7 +65,7 @@ export default function ApprovePage() {
             </p>
           </div>
         )}
-        <p className="small muted" style={{ textAlign: "center" }}>WWT Financials is a fictional bank used for a demonstration.</p>
+        <p className="small muted" style={{ textAlign: "center" }}>Northstead Financial is a fictional bank used for a demonstration.</p>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ from app.mcp_servers.common import require_gateway_pass, load_client
 from app import state
 
 SERVER = "core"
-mcp = MCPServer(name="wwt-core-banking", instructions="Read-only access to a client's deposit accounts at WWT Financials.")
+mcp = MCPServer(name="northstead-core-banking", instructions="Read-only access to a client's deposit accounts at Northstead Financial.")
 
 
 @mcp.tool()

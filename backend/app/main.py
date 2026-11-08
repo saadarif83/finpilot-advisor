@@ -1,5 +1,5 @@
 """
-WWT Financials — Advisor Copilot backend.
+Northstead Financial — Advisor Copilot backend.
 
 One FastAPI service (Render) that hosts, for the demo:
   /auth        simulated enterprise SSO
@@ -50,7 +50,7 @@ async def lifespan(app: FastAPI):
         yield
 
 
-app = FastAPI(title="WWT Financials Advisor Copilot", lifespan=lifespan)
+app = FastAPI(title="Northstead Financial Advisor Copilot", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.FRONTEND_ORIGIN, "http://localhost:5173", "http://127.0.0.1:5173"],
@@ -67,7 +67,7 @@ for name, sub in _mounted.items():
 
 @app.get("/")
 def health():
-    return {"status": "ok", "service": "wwt-financials-advisor-copilot"}
+    return {"status": "ok", "service": "northstead-advisor-copilot"}
 
 
 @app.post("/admin/reset")

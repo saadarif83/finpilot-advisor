@@ -45,7 +45,7 @@ export default function Governance({ user }) {
       <div className="page-head">
         <div>
           <h1>Governance console</h1>
-          <p>Every decision the WWT MCP gateway makes, live. Policy {policy?.version}.</p>
+          <p>Every decision the Northstead MCP gateway makes, live. Policy {policy?.version}.</p>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-# Deploying the WWT Financials Advisor Copilot — step by step
+# Deploying the Northstead Financial Advisor Copilot — step by step
 
 No git or command line needed: everything happens in your web browser.
 Total time: about 30–40 minutes. Do the steps **in this order**.
@@ -43,7 +43,7 @@ that on stage next to the app's egress counter.
 3. Fill in:
    | Field | Value |
    |---|---|
-   | Name | `wwt-advisor-backend` (any name is fine) |
+   | Name | `northstead-advisor-backend` (any name is fine) |
    | Region | Oregon or Ohio — whichever is closest |
    | Branch | `main` |
    | **Root Directory** | `backend` |
@@ -56,13 +56,13 @@ that on stage next to the app's egress counter.
    |---|---|
    | `PRIVATE_LANE_API_KEY` | your **advisor-private** key |
    | `PUBLIC_LANE_API_KEY` | your **advisor-public** key |
-   | `JWT_SECRET` | any long random text, e.g. `wwt-days-7f3k29xq81` |
+   | `JWT_SECRET` | any long random text, e.g. `northstead-demo-7f3k29xq81` |
    | `GATEWAY_SIGNING_KEY` | a *different* long random text |
    | `APPROVAL_SIGNING_KEY` | another *different* long random text |
    | `FRONTEND_ORIGIN` | leave it for now — you'll add it in Step 5 |
    | `FINNHUB_API_KEY` | optional (live market news); skip it to use sample headlines |
 5. Click **Create Web Service** and wait for the log to show `Application startup complete` (3–5 min).
-6. Copy the service URL at the top of the page (for example `https://wwt-advisor-backend.onrender.com`).
+6. Copy the service URL at the top of the page (for example `https://northstead-advisor-backend.onrender.com`).
    Open it in a new tab. You should see `{"status":"ok", ...}`.
 
 ## Step 4 — Frontend on Vercel (5 min)

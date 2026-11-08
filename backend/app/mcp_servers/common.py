@@ -2,7 +2,7 @@
 Shared guard for every MCP server.
 
 Each MCP server represents a back-end system owned by a different team. They
-all trust exactly one caller: the WWT MCP gateway. Every tool call must carry
+all trust exactly one caller: the Northstead MCP gateway. Every tool call must carry
 a short-lived on-behalf-of pass (signed by the gateway) that names:
   - which server it is for (audience)
   - which tool it allows
@@ -27,7 +27,7 @@ def require_gateway_pass(ctx: Context, server: str, tool: str, client_id: str | 
     auth = headers.get("authorization") or headers.get("Authorization")
     if not auth or not auth.startswith("Bearer "):
         raise GatewayPassError(
-            f"[{server}] Direct access refused: no gateway pass. All calls must go through the WWT MCP gateway."
+            f"[{server}] Direct access refused: no gateway pass. All calls must go through the Northstead MCP gateway."
         )
     try:
         claims = verify_obo_token(auth.removeprefix("Bearer ").strip(), server)

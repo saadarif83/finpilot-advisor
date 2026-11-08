@@ -1,4 +1,4 @@
-# WWT Financials — Advisor Copilot (WWT AI Days demo)
+# Northstead Financial — Advisor Copilot (WWT AI Days demo)
 
 A browser-based **advisor copilot** for a fictional bank, built to show what it takes for a
 regulated organization to let an AI agent work on its core systems:

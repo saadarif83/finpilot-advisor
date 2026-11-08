@@ -314,7 +314,7 @@ async def bypass_attempt(employee: dict = Depends(current_employee)):
     import time as _t
 
     attempts = []
-    forged = _jwt.encode({"iss": "wwt-mcp-gateway", "aud": "mcp:core", "sub": "attacker", "tool": "get_deposit_accounts",
+    forged = _jwt.encode({"iss": "northstead-mcp-gateway", "aud": "mcp:core", "sub": "attacker", "tool": "get_deposit_accounts",
                           "client_id": "c-1001", "exp": int(_t.time()) + 60}, "not-the-gateway-key", algorithm="HS256")
     for label, token in (("No gateway pass", None), ("Forged gateway pass", forged)):
         try:

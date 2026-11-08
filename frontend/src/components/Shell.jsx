@@ -9,7 +9,7 @@ export function Wordmark({ sub = true }) {
   return (
     <div className="wordmark">
       <div className="mark"><span /><span /><span /></div>
-      WWT Financials {sub && <span className="sub">Advisor Copilot</span>}
+      Northstead Financial {sub && <span className="sub">Advisor Copilot</span>}
     </div>
   );
 }
@@ -69,7 +69,7 @@ export default function Shell({ user, page, children, onSignOut, onReset }) {
             </button>
           ))}
           <div className="foot">
-            Every AI request goes through the <b>WWT MCP gateway</b>. Client data stays on the private model lane.
+            Every AI request goes through the <b>Northstead MCP gateway</b>. Client data stays on the private model lane.
             <br /><br />Fictional bank and clients. The private lane is simulated for this demo.
           </div>
         </aside>

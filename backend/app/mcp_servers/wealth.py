@@ -5,7 +5,7 @@ from app import state
 from app.data_seed import PERFORMANCE_MONTHS
 
 SERVER = "wealth"
-mcp = MCPServer(name="wwt-wealth-platform", instructions="Read-only access to a client's investment accounts at WWT Financials.")
+mcp = MCPServer(name="northstead-wealth-platform", instructions="Read-only access to a client's investment accounts at Northstead Financial.")
 
 
 @mcp.tool()

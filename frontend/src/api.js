@@ -1,7 +1,7 @@
 // Every call to the backend goes through here.
 export const BACKEND_URL = (import.meta.env.VITE_BACKEND_URL || "http://localhost:8000").replace(/\/+$/, "");
 
-const KEY = "wwtf.session";
+const KEY = "northstead.session";
 // sessionStorage = one sign-in per browser tab, so you can be the Advisor in
 // one tab and the Supervisor in another during the demo.
 export function loadSession() {

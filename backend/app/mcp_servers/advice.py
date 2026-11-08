@@ -17,7 +17,7 @@ from app.config import settings
 from app import state
 
 SERVER = "advice"
-mcp = MCPServer(name="wwt-advice-planning", instructions="Computes advice proposals with suitability checks. Never executes anything.")
+mcp = MCPServer(name="northstead-advice-planning", instructions="Computes advice proposals with suitability checks. Never executes anything.")
 
 
 def _buffer(profile: dict) -> tuple[float, int]:
@@ -114,7 +114,7 @@ async def propose_mortgage_prepayment(client_id: str, ctx: Context, amount: floa
     c = load_client(client_id)
     p, m = c["profile"], c["mortgage"]
     if not m:
-        return {"recommended": False, "reason": "Client has no mortgage with WWT Financials."}
+        return {"recommended": False, "reason": "Client has no mortgage with Northstead Financial."}
     buffer, months = _buffer(p)
     hisa = _hisa(c)
     priv = state.mortgage_privilege(m)

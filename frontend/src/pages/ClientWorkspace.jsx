@@ -90,7 +90,7 @@ export default function ClientWorkspace({ clientId, user }) {
               {mortgage.mortgage ? <>
                 <div className="value">{money(mortgage.mortgage.balance)}</div>
                 <div className="sub">{mortgage.mortgage.rate}% {mortgage.mortgage.rate_type} · prepay room {money(mortgage.privilege.remaining_this_year)}</div>
-              </> : <><div className="value" style={{ color: "var(--text-3)" }}>None</div><div className="sub">No mortgage with WWT</div></>}
+              </> : <><div className="value" style={{ color: "var(--text-3)" }}>None</div><div className="sub">No mortgage with Northstead Financial</div></>}
             </div>)}
           {wealth.restricted ? <Locked title="Investments" reason={wealth.reason} /> : (
             <div className="card tile"><div className="label">Investments</div><div className="value">{money(wealth.total)}</div>

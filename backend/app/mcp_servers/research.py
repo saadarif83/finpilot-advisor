@@ -8,7 +8,7 @@ from app.config import settings
 from app.data_seed import PRODUCTS, POLICIES
 
 SERVER = "research"
-mcp = MCPServer(name="wwt-research", instructions="Market news, current product rates and internal policy search. No client data.")
+mcp = MCPServer(name="northstead-research", instructions="Market news, current product rates and internal policy search. No client data.")
 
 SAMPLE_NEWS = [
     "Bank of Canada holds overnight rate, signals patience on further cuts",
@@ -36,14 +36,14 @@ async def get_market_news(ctx: Context, topic: str = "Canadian markets") -> dict
 
 @mcp.tool()
 async def get_product_rates(ctx: Context) -> dict:
-    """Get WWT Financials' current GIC and savings rates and the prime rate."""
+    """Get Northstead Financial's current GIC and savings rates and the prime rate."""
     require_gateway_pass(ctx, SERVER, "get_product_rates")
     return PRODUCTS
 
 
 @mcp.tool()
 async def search_policies(query: str, ctx: Context) -> dict:
-    """Search WWT Financials' internal advice and AI-use policies (prepayment, suitability, card debt, AI use, untrusted content)."""
+    """Search Northstead Financial's internal advice and AI-use policies (prepayment, suitability, card debt, AI use, untrusted content)."""
     require_gateway_pass(ctx, SERVER, "search_policies")
     words = [w for w in query.lower().split() if len(w) > 2]
     scored = []

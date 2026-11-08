@@ -3,7 +3,7 @@ from mcp.server.mcpserver import MCPServer, Context
 from app.mcp_servers.common import require_gateway_pass, load_client
 
 SERVER = "profile"
-mcp = MCPServer(name="wwt-client-profile", instructions="Read-only access to a client's KYC profile, suitability and consents.")
+mcp = MCPServer(name="northstead-client-profile", instructions="Read-only access to a client's KYC profile, suitability and consents.")
 
 
 @mcp.tool()

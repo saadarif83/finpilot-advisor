@@ -22,7 +22,7 @@ from jose import jwt, JWTError
 from app.config import settings
 
 ALG = "HS256"
-ISSUER = "https://sso.wwtfinancials.example/simulated"
+ISSUER = "https://sso.northstead.example/simulated"
 
 EMPLOYEES = {
     "jordan.lee": {"username": "jordan.lee", "name": "Jordan Lee", "role": "advisor", "title": "Wealth Advisor", "branch": "Toronto — King & Bay"},
@@ -40,7 +40,7 @@ def issue_employee_token(username: str) -> str:
     e = EMPLOYEES[username]
     now = int(time.time())
     return jwt.encode(
-        {"iss": ISSUER, "aud": "wwt-advisor-app", "sub": e["username"], "name": e["name"],
+        {"iss": ISSUER, "aud": "northstead-advisor-app", "sub": e["username"], "name": e["name"],
          "role": e["role"], "iat": now, "exp": now + 12 * 3600, "jti": str(uuid.uuid4())},
         settings.JWT_SECRET, algorithm=ALG,
     )
@@ -48,7 +48,7 @@ def issue_employee_token(username: str) -> str:
 
 def decode_employee_token(token: str) -> dict:
     try:
-        return jwt.decode(token, settings.JWT_SECRET, algorithms=[ALG], audience="wwt-advisor-app", issuer=ISSUER)
+        return jwt.decode(token, settings.JWT_SECRET, algorithms=[ALG], audience="northstead-advisor-app", issuer=ISSUER)
     except JWTError:
         raise HTTPException(401, "Invalid or expired sign-in. Please sign in again.")
 
@@ -76,11 +76,11 @@ def mint_obo_token(*, server: str, tool: str, employee: dict, client_id: str | N
     now = int(time.time())
     return jwt.encode(
         {
-            "iss": "wwt-mcp-gateway",
+            "iss": "northstead-mcp-gateway",
             "aud": f"mcp:{server}",
             "sub": employee["username"],
             "role": employee["role"],
-            "act": {"sub": "wwt-mcp-gateway"},  # RFC 8693 "actor" claim
+            "act": {"sub": "northstead-mcp-gateway"},  # RFC 8693 "actor" claim
             "client_id": client_id,
             "tool": tool,
             "domains": domains,
@@ -94,7 +94,7 @@ def mint_obo_token(*, server: str, tool: str, employee: dict, client_id: str | N
 
 def verify_obo_token(token: str, server: str) -> dict:
     return jwt.decode(token, settings.GATEWAY_SIGNING_KEY, algorithms=[ALG],
-                      audience=f"mcp:{server}", issuer="wwt-mcp-gateway")
+                      audience=f"mcp:{server}", issuer="northstead-mcp-gateway")
 
 
 # ------------------------------------------------------- client approval links
@@ -102,7 +102,7 @@ def verify_obo_token(token: str, server: str) -> dict:
 def issue_client_approval_token(proposal_id: str, client_id: str, args_hash: str) -> str:
     now = int(time.time())
     return jwt.encode(
-        {"iss": "wwt-approvals", "aud": "client-approval", "sub": client_id, "proposal_id": proposal_id,
+        {"iss": "northstead-approvals", "aud": "client-approval", "sub": client_id, "proposal_id": proposal_id,
          "args_hash": args_hash, "iat": now, "exp": now + 3600},
         settings.APPROVAL_SIGNING_KEY, algorithm=ALG,
     )
@@ -110,6 +110,6 @@ def issue_client_approval_token(proposal_id: str, client_id: str, args_hash: str
 
 def verify_client_approval_token(token: str) -> dict:
     try:
-        return jwt.decode(token, settings.APPROVAL_SIGNING_KEY, algorithms=[ALG], audience="client-approval", issuer="wwt-approvals")
+        return jwt.decode(token, settings.APPROVAL_SIGNING_KEY, algorithms=[ALG], audience="client-approval", issuer="northstead-approvals")
     except JWTError:
         raise HTTPException(401, "This approval link is invalid or has expired.")

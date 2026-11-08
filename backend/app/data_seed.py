@@ -1,5 +1,5 @@
 """
-Fictional clients of the fictional bank "WWT Financials". All names, numbers,
+Fictional clients of the fictional bank "Northstead Financial". All names, numbers,
 SINs and account numbers are made up. Amounts are CAD.
 
 Each client is spread across the bank's back-end systems the same way a real
@@ -71,7 +71,7 @@ CLIENTS = {
             {"account_id": "dep-1001-hisa", "type": "savings", "name": "High-Interest Savings", "account_number": "00412-1001-8820", "balance": 42300.00, "rate": 2.75},
         ],
         "deposit_transactions": _payroll_cycle("a", "dep-1001-chq", 4650.00, 2890.33, "Mortgage payment", 412.60),
-        "card": {"card_id": "cc-1001", "product": "WWT Visa Infinite", "card_number": "4519 7731 0042 1187", "credit_limit": 15000.00, "balance": 4812.40, "apr": 20.99, "min_payment": 145.00, "due_date": "2026-11-18"},
+        "card": {"card_id": "cc-1001", "product": "Northstead Visa Infinite", "card_number": "4519 7731 0042 1187", "credit_limit": 15000.00, "balance": 4812.40, "apr": 20.99, "min_payment": 145.00, "due_date": "2026-11-18"},
         "card_transactions": [
             _tx("ac1", "2026-10-28", "Air Canada", -1240.00, "cc-1001", "Travel"),
             _tx("ac2", "2026-10-22", "Costco", -386.12, "cc-1001", "Groceries"),
@@ -135,7 +135,7 @@ CLIENTS = {
                 ("2026-10-20", "Home Depot", -642.30, "dep-1002-chq"),
             ],
         ),
-        "card": {"card_id": "cc-1002", "product": "WWT Mastercard Gold", "card_number": "5299 3310 0018 4402", "credit_limit": 10000.00, "balance": 612.80, "apr": 19.99, "min_payment": 25.00, "due_date": "2026-11-21"},
+        "card": {"card_id": "cc-1002", "product": "Northstead Mastercard Gold", "card_number": "5299 3310 0018 4402", "credit_limit": 10000.00, "balance": 612.80, "apr": 19.99, "min_payment": 25.00, "due_date": "2026-11-21"},
         "card_transactions": [
             _tx("dc1", "2026-10-25", "Metro", -164.20, "cc-1002", "Groceries"),
             _tx("dc2", "2026-10-19", "Shoppers Drug Mart", -58.60, "cc-1002", "Shopping"),
@@ -184,7 +184,7 @@ CLIENTS = {
             {"account_id": "dep-1003-hisa", "type": "savings", "name": "High-Interest Savings", "account_number": "00421-1003-6655", "balance": 5200.00, "rate": 2.75},
         ],
         "deposit_transactions": _payroll_cycle("m", "dep-1003-chq", 2850.00, 2150.00, "Rent — 33 Mill St", 260.40),
-        "card": {"card_id": "cc-1003", "product": "WWT Visa Cash Back", "card_number": "4519 6604 0091 2245", "credit_limit": 12000.00, "balance": 9640.15, "apr": 21.99, "min_payment": 290.00, "due_date": "2026-11-15"},
+        "card": {"card_id": "cc-1003", "product": "Northstead Visa Cash Back", "card_number": "4519 6604 0091 2245", "credit_limit": 12000.00, "balance": 9640.15, "apr": 21.99, "min_payment": 290.00, "due_date": "2026-11-15"},
         "card_transactions": [
             _tx("mc1", "2026-10-29", "Apple Store", -1899.00, "cc-1003", "Shopping"),
             _tx("mc2", "2026-10-24", "Uber Eats", -64.30, "cc-1003", "Dining"),
@@ -234,7 +234,7 @@ CLIENTS = {
             {"account_id": "dep-1004-hisa", "type": "savings", "name": "Joint High-Interest Savings", "account_number": "00433-1004-2299", "balance": 64000.00, "rate": 2.75},
         ],
         "deposit_transactions": _payroll_cycle("t", "dep-1004-chq", 5400.00, 2240.10, "Mortgage payment", 520.70),
-        "card": {"card_id": "cc-1004", "product": "WWT Visa Infinite", "card_number": "4519 2210 0063 7751", "credit_limit": 20000.00, "balance": 1840.25, "apr": 20.99, "min_payment": 55.00, "due_date": "2026-11-25"},
+        "card": {"card_id": "cc-1004", "product": "Northstead Visa Infinite", "card_number": "4519 2210 0063 7751", "credit_limit": 20000.00, "balance": 1840.25, "apr": 20.99, "min_payment": 55.00, "due_date": "2026-11-25"},
         "card_transactions": [
             _tx("tc1", "2026-10-26", "Sobeys", -244.10, "cc-1004", "Groceries"),
             _tx("tc2", "2026-10-17", "Ikea", -690.00, "cc-1004", "Shopping"),
@@ -283,7 +283,7 @@ CLIENTS = {
             {"account_id": "dep-1005-hisa", "type": "savings", "name": "High-Interest Savings", "account_number": "00440-1005-9077", "balance": 31000.00, "rate": 2.75},
         ],
         "deposit_transactions": _payroll_cycle("s", "dep-1005-chq", 6100.00, 2600.00, "Rent — studio", 455.00),
-        "card": {"card_id": "cc-1005", "product": "WWT Business Visa", "card_number": "4519 9012 0077 3318", "credit_limit": 25000.00, "balance": 7425.60, "apr": 19.99, "min_payment": 225.00, "due_date": "2026-11-20"},
+        "card": {"card_id": "cc-1005", "product": "Northstead Business Visa", "card_number": "4519 9012 0077 3318", "credit_limit": 25000.00, "balance": 7425.60, "apr": 19.99, "min_payment": 225.00, "due_date": "2026-11-20"},
         "card_transactions": [
             _tx("sc1", "2026-10-30", "Adobe", -89.99, "cc-1005", "Shopping"),
             _tx("sc2", "2026-10-23", "Staples", -412.30, "cc-1005", "Shopping"),
