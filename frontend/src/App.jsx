@@ -46,7 +46,7 @@ function EmployeeApp() {
   if (page === "client" && arg) body = <ClientWorkspace key={arg} clientId={arg} user={session.user} />;
   else if (page === "research") body = <Research user={session.user} />;
   else if (page === "approvals") body = <Approvals user={session.user} selectedId={arg} />;
-  else if (page === "governance") body = <Governance user={session.user} />;
+  else if (page === "governance") body = ["supervisor", "compliance"].includes(role) ? <Governance user={session.user} /> : <Restricted />;
   else if (page === "audit") body = <Audit key={arg || "list"} user={session.user} selectedId={arg} />;
   else if (page === "clients" || !page) body = role === "compliance" ? <Governance user={session.user} /> : <Clients user={session.user} />;
   else body = <Clients user={session.user} />;
@@ -56,6 +56,15 @@ function EmployeeApp() {
            onReset={async () => { if (confirm("Reset all clients, proposals, audit records and counters to the start?")) { await api.reset(); window.location.reload(); } }}>
       {body}
     </Shell>
+  );
+}
+
+function Restricted() {
+  return (
+    <div className="card card-pad" style={{ maxWidth: 560 }}>
+      <h3>🔒 Governance console is restricted</h3>
+      <p className="muted" style={{ marginBottom: 0 }}>Bank-wide AI activity, policy and the kill switch are visible to Supervisors and Compliance only.</p>
+    </div>
   );
 }
 

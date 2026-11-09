@@ -96,7 +96,7 @@ The client-approval QR code also points at that address.
    You should see tool calls stream in the trace, a reply, and a proposal card.
 3. Click **Send to client for approval**. Scan the QR code with your phone and tap **Approve**.
    Aisha's card balance updates on screen within about 5 seconds.
-4. Open **Governance console**. You'll see the decisions you just generated.
+4. In a new browser tab, sign in as **Taylor Brooks** (Compliance) and open **Governance console**. You'll see the decisions you just generated. (Advisors and tellers can't open it.)
 5. Before the real demo, click **↺ Reset demo** (top right) to start clean.
 
 ---
@@ -115,7 +115,7 @@ The client-approval QR code also points at that address.
 ## Demo-day checklist
 
 - [ ] 10 minutes before: open the Render URL so the backend wakes up, then open the app and click **↺ Reset demo**.
-- [ ] Tab 1: **Jordan Lee** (advisor). Tab 2: **Morgan Wright** (supervisor), on the Approvals page. Tab 3: Governance console.
+- [ ] Tab 1: **Jordan Lee** (advisor). Tab 2: **Morgan Wright** (supervisor), on the Approvals page. Tab 3: **Taylor Brooks** (compliance), on the Governance console. Only Supervisor and Compliance can open it.
 - [ ] Phone ready to scan QR codes, on your own hotspot rather than venue Wi-Fi.
 - [ ] Keep a backup screen recording.
 - [ ] Say it once: "The private lane is Claude standing in for an on-prem model, and the gateway runs in-process for the demo."

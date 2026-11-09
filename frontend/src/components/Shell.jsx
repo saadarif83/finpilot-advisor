@@ -34,7 +34,8 @@ export default function Shell({ user, page, children, onSignOut, onReset }) {
     ["research", "🔎", "Research"],
     user.role !== "teller" && ["approvals", "✅", "Approvals", pending],
   ].filter(Boolean);
-  const gov = [["governance", "🛡️", "Governance console"], ["audit", "📜", "Audit trail"]];
+  const canGovern = ["supervisor", "compliance"].includes(user.role);
+  const gov = [canGovern && ["governance", "🛡️", "Governance console"], ["audit", "📜", canGovern ? "Audit trail" : "My audit trail"]].filter(Boolean);
   const active = page === "client" ? "clients" : page;
 
   return (

@@ -273,19 +273,25 @@ async def call_tool_endpoint(req: CallRequest, employee: dict = Depends(current_
 
 
 # ======================================================== governance endpoints
+# The governance view (bank-wide activity, policy, kill switch) is itself
+# role-gated: supervisors and compliance only.
+GOVERNANCE_ROLES = ("supervisor", "compliance")
 
 @router.get("/events")
 def get_events(since: int = 0, employee: dict = Depends(current_employee)):
+    require_role(employee, *GOVERNANCE_ROLES)
     return {"events": events.events_since(since)}
 
 
 @router.get("/stats")
 def get_stats(employee: dict = Depends(current_employee)):
+    require_role(employee, *GOVERNANCE_ROLES)
     return events.stats()
 
 
 @router.get("/policy")
 async def get_policy(employee: dict = Depends(current_employee)):
+    require_role(employee, *GOVERNANCE_ROLES)
     discovered = await discover_tools()
     out = policy.policy_summary()
     out["discovered_tools"] = sorted(discovered.keys())
@@ -300,7 +306,7 @@ class KillSwitch(BaseModel):
 
 @router.post("/killswitch")
 def kill_switch(body: KillSwitch, employee: dict = Depends(current_employee)):
-    require_role(employee, "supervisor", "compliance", "advisor")
+    require_role(employee, *GOVERNANCE_ROLES)
     events.set_kill_switch(body.enabled, employee["username"])
     events.record("admin", "info", employee=employee, detail=f"Kill switch turned {'ON' if body.enabled else 'OFF'}")
     return events.stats()["kill_switch"]
@@ -308,6 +314,7 @@ def kill_switch(body: KillSwitch, employee: dict = Depends(current_employee)):
 
 @router.post("/demo/bypass")
 async def bypass_attempt(employee: dict = Depends(current_employee)):
+    require_role(employee, *GOVERNANCE_ROLES)
     """Demo: try to reach the core banking MCP server WITHOUT the gateway —
     once with no pass, once with a forged pass. Both must be refused."""
     from jose import jwt as _jwt
