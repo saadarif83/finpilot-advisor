@@ -145,14 +145,18 @@ def mask_pii(obj, path: str = "", masked: list | None = None):
 
 
 # --------------------------------------------------------------- injection scan
-INJECTION_PATTERNS = [
-    r"ignore (all )?(previous|prior|above) instructions",
-    r"system (note|prompt|message) to (the )?ai",
-    r"you are now",
-    r"do not (tell|mention|inform)",
-    r"immediately transfer",
-    r"pre-?authori[sz]ed",
+# DEMO: simple pattern matching. In production, an in-perimeter guard
+# (classifier) model would sit here, layered with patterns like these.
+# (regex, plain-English description shown on the Governance console)
+INJECTION_RULES = [
+    (r"ignore (all )?(previous|prior|above) instructions", "“ignore (all) previous / prior / above instructions”"),
+    (r"system (note|prompt|message) to (the )?ai", "“system note / prompt / message to (the) AI”"),
+    (r"you are now", "“you are now …” (role hijack)"),
+    (r"do not (tell|mention|inform)", "“do not tell / mention / inform” (concealment)"),
+    (r"immediately transfer", "“immediately transfer” (urgent money movement)"),
+    (r"pre-?authori[sz]ed", "“pre-authorized” (fake authority)"),
 ]
+INJECTION_PATTERNS = [rx for rx, _ in INJECTION_RULES]
 _INJ = re.compile("|".join(INJECTION_PATTERNS), re.IGNORECASE)
 
 
@@ -180,6 +184,7 @@ def policy_summary() -> dict:
         "role_labels": ROLE_LABELS,
         "consent_gated_domains": sorted(CONSENT_GATED_DOMAINS),
         "masked_fields": sorted(MASKERS.keys()),
+        "injection_patterns": [{"regex": rx, "label": label} for rx, label in INJECTION_RULES],
         "lanes": LANE_RULES,
         "tool_registry": TOOL_REGISTRY,
         "rules": [

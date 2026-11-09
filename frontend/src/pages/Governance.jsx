@@ -158,6 +158,27 @@ export default function Governance({ user }) {
               <div className="small muted" style={{ marginTop: 8 }}>Masked before any model sees them: {policy.masked_fields.join(", ")}.</div>
             </div>
           )}
+
+          {policy?.injection_patterns && (
+            <div className="card card-pad">
+              <div className="card-title">Prompt-injection patterns</div>
+              <p className="small muted" style={{ marginTop: 0 }}>
+                Every free-text field in a tool result (memos, descriptions, notes) is checked against these patterns, ignoring case.
+                A match is <span className="pill flag">Flagged</span>: passed to the model as untrusted data with a warning, and logged here and in the audit record.
+              </p>
+              <table className="tbl">
+                <thead><tr><th>Looks for</th><th>Pattern</th></tr></thead>
+                <tbody>
+                  {policy.injection_patterns.map((p) => (
+                    <tr key={p.regex}><td className="small">{p.label}</td><td className="mono" style={{ fontSize: 11 }}>{p.regex}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="small muted" style={{ marginTop: 8 }}>
+                Demo: simple pattern matching. Production: an in-perimeter guard model, layered with patterns. Either way the agent has no tool that can move money.
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
